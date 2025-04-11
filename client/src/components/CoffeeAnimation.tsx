@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -10,6 +10,7 @@ const CoffeeAnimation = () => {
   const steam1Ref = useRef<SVGPathElement>(null);
   const steam2Ref = useRef<SVGPathElement>(null);
   const steam3Ref = useRef<SVGPathElement>(null);
+  const [animationsInitialized, setAnimationsInitialized] = useState(false);
 
   useEffect(() => {
     // Section fade in animation
@@ -29,54 +30,76 @@ const CoffeeAnimation = () => {
       observer.observe(sectionRef.current);
     }
 
-    // Coffee cup fill animation
-    if (coffeeRef.current && steam1Ref.current && steam2Ref.current && steam3Ref.current) {
-      const coffeeTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          end: "bottom 30%",
-          scrub: true,
-        },
-      });
-
-      coffeeTl.to(coffeeRef.current, {
-        scaleY: 1,
-        duration: 2,
-        ease: "power1.inOut",
-      });
-
-      // Steam animations
-      gsap.to(steam1Ref.current, {
-        opacity: 0.7,
-        duration: 1,
-        repeat: -1,
-        yoyo: true,
-      });
-
-      gsap.to(steam2Ref.current, {
-        opacity: 0.7,
-        duration: 0.8,
-        repeat: -1,
-        yoyo: true,
-        delay: 0.2,
-      });
-
-      gsap.to(steam3Ref.current, {
-        opacity: 0.7,
-        duration: 1.2,
-        repeat: -1,
-        yoyo: true,
-        delay: 0.4,
-      });
-    }
-
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
+
+  // Separate effect for GSAP animations to ensure DOM is ready
+  useEffect(() => {
+    // Make sure all refs are populated before initializing animations
+    if (
+      sectionRef.current && 
+      coffeeRef.current && 
+      steam1Ref.current && 
+      steam2Ref.current && 
+      steam3Ref.current && 
+      !animationsInitialized
+    ) {
+      // Set timeout to ensure DOM is fully rendered
+      const animationTimeout = setTimeout(() => {
+        try {
+          // Coffee cup fill animation
+          const coffeeTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 70%",
+              end: "bottom 30%",
+              scrub: true,
+            },
+          });
+
+          coffeeTl.to(coffeeRef.current, {
+            scaleY: 1,
+            duration: 2,
+            ease: "power1.inOut",
+          });
+
+          // Steam animations
+          gsap.to(steam1Ref.current, {
+            opacity: 0.7,
+            duration: 1,
+            repeat: -1,
+            yoyo: true,
+          });
+
+          gsap.to(steam2Ref.current, {
+            opacity: 0.7,
+            duration: 0.8,
+            repeat: -1,
+            yoyo: true,
+            delay: 0.2,
+          });
+
+          gsap.to(steam3Ref.current, {
+            opacity: 0.7,
+            duration: 1.2,
+            repeat: -1,
+            yoyo: true,
+            delay: 0.4,
+          });
+
+          setAnimationsInitialized(true);
+        } catch (error) {
+          console.error("Error initializing animations:", error);
+        }
+      }, 500); // Small delay to ensure DOM is ready
+
+      return () => clearTimeout(animationTimeout);
+    }
+  }, [animationsInitialized]);
 
   return (
     <section
