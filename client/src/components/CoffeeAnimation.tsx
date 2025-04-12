@@ -1,19 +1,75 @@
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const CoffeeAnimation = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const coffeeRef = useRef<SVGRectElement>(null);
-  const steam1Ref = useRef<SVGPathElement>(null);
-  const steam2Ref = useRef<SVGPathElement>(null);
-  const steam3Ref = useRef<SVGPathElement>(null);
-  const [animationsInitialized, setAnimationsInitialized] = useState(false);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [steamVisible, setSteamVisible] = useState(false);
+  const [steamOpacity1, setSteamOpacity1] = useState(0);
+  const [steamOpacity2, setSteamOpacity2] = useState(0);
+  const [steamOpacity3, setSteamOpacity3] = useState(0);
 
+  // Animate steam effect
   useEffect(() => {
-    // Section fade in animation
+    if (!steamVisible) return;
+    
+    // Create steam animation effect
+    const animateSteam = () => {
+      setSteamOpacity1(0.4 + Math.sin(Date.now() / 1000) * 0.3);
+      setSteamOpacity2(0.4 + Math.sin((Date.now() / 800) + 1) * 0.3);
+      setSteamOpacity3(0.4 + Math.sin((Date.now() / 900) + 2) * 0.3);
+    };
+    
+    // Run animation at 30fps
+    const steamInterval = setInterval(animateSteam, 33);
+    
+    return () => clearInterval(steamInterval);
+  }, [steamVisible]);
+
+  // Handle scroll effects without GSAP
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const section = sectionRef.current;
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionHeight = section.offsetHeight;
+      const windowHeight = window.innerHeight;
+      
+      // Check if section is visible
+      if (sectionTop < windowHeight * 0.7 && sectionTop + sectionHeight > 0) {
+        setIsVisible(true);
+        
+        // Calculate how far into the section we've scrolled (0-100%)
+        const scrolled = Math.min(
+          Math.max(
+            (windowHeight * 0.7 - sectionTop) / (sectionHeight * 0.8),
+            0
+          ),
+          1
+        );
+        
+        setScrollPercentage(scrolled);
+        
+        // Show steam when coffee is half full
+        if (scrolled > 0.3 && !steamVisible) {
+          setSteamVisible(true);
+        }
+      }
+    };
+
+    // Initial check
+    handleScroll();
+    
+    // Add event listener
+    window.addEventListener("scroll", handleScroll);
+    
+    // Clean up
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [steamVisible]);
+
+  // Section fade in with IntersectionObserver
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -36,70 +92,6 @@ const CoffeeAnimation = () => {
       }
     };
   }, []);
-
-  // Separate effect for GSAP animations to ensure DOM is ready
-  useEffect(() => {
-    // Make sure all refs are populated before initializing animations
-    if (
-      sectionRef.current && 
-      coffeeRef.current && 
-      steam1Ref.current && 
-      steam2Ref.current && 
-      steam3Ref.current && 
-      !animationsInitialized
-    ) {
-      // Set timeout to ensure DOM is fully rendered
-      const animationTimeout = setTimeout(() => {
-        try {
-          // Coffee cup fill animation
-          const coffeeTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 70%",
-              end: "bottom 30%",
-              scrub: true,
-            },
-          });
-
-          coffeeTl.to(coffeeRef.current, {
-            scaleY: 1,
-            duration: 2,
-            ease: "power1.inOut",
-          });
-
-          // Steam animations
-          gsap.to(steam1Ref.current, {
-            opacity: 0.7,
-            duration: 1,
-            repeat: -1,
-            yoyo: true,
-          });
-
-          gsap.to(steam2Ref.current, {
-            opacity: 0.7,
-            duration: 0.8,
-            repeat: -1,
-            yoyo: true,
-            delay: 0.2,
-          });
-
-          gsap.to(steam3Ref.current, {
-            opacity: 0.7,
-            duration: 1.2,
-            repeat: -1,
-            yoyo: true,
-            delay: 0.4,
-          });
-
-          setAnimationsInitialized(true);
-        } catch (error) {
-          console.error("Error initializing animations:", error);
-        }
-      }, 500); // Small delay to ensure DOM is ready
-
-      return () => clearTimeout(animationTimeout);
-    }
-  }, [animationsInitialized]);
 
   return (
     <section
@@ -139,7 +131,6 @@ const CoffeeAnimation = () => {
 
             {/* Coffee */}
             <rect
-              ref={coffeeRef}
               id="coffee"
               x="40"
               y="70"
@@ -147,37 +138,46 @@ const CoffeeAnimation = () => {
               height="130"
               rx="10"
               fill="#5D4037"
-              transform="scaleY(0)"
-              style={{ transformOrigin: "center top" }}
+              style={{ 
+                transformOrigin: "center top",
+                transform: `scaleY(${scrollPercentage})`,
+                transition: "transform 0.1s ease-out"
+              }}
             />
 
             {/* Steam */}
             <path
-              ref={steam1Ref}
               id="steam1"
               d="M70,50 Q65,35 75,30 Q85,25 80,15"
               stroke="#E6DED1"
               strokeWidth="3"
               fill="none"
-              opacity="0"
+              style={{ 
+                opacity: steamVisible ? steamOpacity1 : 0,
+                transition: "opacity 0.5s ease-out"
+              }}
             />
             <path
-              ref={steam2Ref}
               id="steam2"
               d="M100,50 Q95,35 105,30 Q115,25 110,15"
               stroke="#E6DED1"
               strokeWidth="3"
               fill="none"
-              opacity="0"
+              style={{ 
+                opacity: steamVisible ? steamOpacity2 : 0,
+                transition: "opacity 0.5s ease-out"
+              }}
             />
             <path
-              ref={steam3Ref}
               id="steam3"
               d="M130,50 Q125,35 135,30 Q145,25 140,15"
               stroke="#E6DED1"
               strokeWidth="3"
               fill="none"
-              opacity="0"
+              style={{ 
+                opacity: steamVisible ? steamOpacity3 : 0,
+                transition: "opacity 0.5s ease-out"
+              }}
             />
           </svg>
         </div>
