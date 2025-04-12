@@ -14,6 +14,8 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   saveFranchiseRequest(request: InsertFranchiseRequest): Promise<FranchiseRequest>;
   saveContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
+  getAllFranchiseRequests(): Promise<FranchiseRequest[]>;
+  getAllContactMessages(): Promise<ContactMessage[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -66,6 +68,18 @@ export class MemStorage implements IStorage {
     this.contactMessages.set(id, contactMessage);
     console.log(`Contact message saved: ${JSON.stringify(contactMessage)}`);
     return contactMessage;
+  }
+
+  async getAllFranchiseRequests(): Promise<FranchiseRequest[]> {
+    // Convert Map values to an array and sort by newest first
+    return Array.from(this.franchiseRequests.values())
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  }
+
+  async getAllContactMessages(): Promise<ContactMessage[]> {
+    // Convert Map values to an array and sort by newest first
+    return Array.from(this.contactMessages.values())
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 }
 

@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import CoffeeAnimation from "@/components/CoffeeAnimation";
 import MenuSection from "@/components/MenuSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import GallerySection from "@/components/GallerySection";
 import FranchiseSection from "@/components/FranchiseSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <CoffeeAnimation />
       <MenuSection />
       <WhyChooseUs />
+      <GallerySection />
       <FranchiseSection />
       <TestimonialsSection />
       <ContactSection />

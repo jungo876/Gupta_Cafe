@@ -36,6 +36,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Admin routes to get all franchise requests
+  app.get("/api/admin/franchise-requests", async (req, res) => {
+    try {
+      const franchiseRequests = await storage.getAllFranchiseRequests();
+      return res.status(200).json(franchiseRequests);
+    } catch (error) {
+      console.error("Error fetching franchise requests:", error);
+      return res.status(500).json({ success: false, message: "Internal server error" });
+    }
+  });
+
+  // Admin routes to get all contact messages
+  app.get("/api/admin/contact-messages", async (req, res) => {
+    try {
+      const contactMessages = await storage.getAllContactMessages();
+      return res.status(200).json(contactMessages);
+    } catch (error) {
+      console.error("Error fetching contact messages:", error);
+      return res.status(500).json({ success: false, message: "Internal server error" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
