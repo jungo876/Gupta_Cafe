@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   // Handle scroll events to change navbar style
   useEffect(() => {
@@ -44,11 +45,17 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        <a href="#" className="flex items-center">
-          <span className="text-3xl font-['Pacifico'] text-cream">
-            Brew<span className="text-orange-400">Haven</span>
-          </span>
-        </a>
+        <div className="flex items-center">
+          <a href="/" className="flex items-center">
+            <span className="text-3xl font-['Pacifico'] text-cream">
+              Brew<span className="text-orange-400">Haven</span>
+            </span>
+          </a>
+          {/* Admin link - subtle and small */}
+          <Link href="/admin" className="ml-3 text-xs text-cream/50 hover:text-orange-400 transition-colors">
+            Admin
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-8">
@@ -143,6 +150,9 @@ const Navbar = () => {
           >
             Contact
           </button>
+          <Link href="/admin" className="text-cream/50 hover:text-orange-400 transition-colors text-sm text-left mt-4 pt-4 border-t border-cream/10">
+            Admin Dashboard
+          </Link>
         </div>
       </div>
     </nav>
