@@ -20,11 +20,11 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-brown-600/30 to-brown-800/40"></div>
       </div>
       <div className="container mx-auto px-4 md:px-6 z-10 text-center">
-        <div className="bg-cream/90 p-8 rounded-lg inline-block max-w-3xl shadow-xl">
-          <h1 className="text-4xl md:text-6xl font-['Playfair_Display'] font-bold text-brown-800 mb-6 tracking-wide">
+        <div className="bg-brown-800/80 p-8 rounded-lg inline-block max-w-3xl shadow-xl backdrop-blur-sm">
+          <h1 className="text-4xl md:text-6xl font-['Playfair_Display'] font-bold text-white mb-6 tracking-wide drop-shadow-lg">
             Brewing Happiness<br />In Every Cup
           </h1>
-          <p className="text-xl text-brown-700 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-md">
             Experience our artisanal coffee in a warm, inviting atmosphere that feels like home.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -36,7 +36,7 @@ const HeroSection = () => {
             </button>
             <button
               onClick={() => scrollToSection("franchise")}
-              className="px-8 py-3 border-2 border-brown-600 text-brown-600 rounded-full font-medium hover:bg-brown-600 hover:text-white transition-all transform hover:scale-105 shadow-lg"
+              className="px-8 py-3 border-2 border-cream text-cream rounded-full font-medium hover:bg-cream hover:text-brown-800 transition-all transform hover:scale-105 shadow-lg"
             >
               Get a Franchise
             </button>
