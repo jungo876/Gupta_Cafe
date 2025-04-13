@@ -182,11 +182,7 @@ const CoffeeAnimation = () => {
           </svg>
         </div>
 
-        <div className="mt-8">
-          <p className="font-medium text-brown-600 inline-block border-b-2 border-orange-400 pb-1">
-            Watch the coffee pour as you scroll
-          </p>
-        </div>
+        {/* Text removed as requested */}
       </div>
 
       <div className="absolute -left-20 top-1/3 opacity-5">

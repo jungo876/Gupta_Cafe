@@ -13,17 +13,18 @@ const HeroSection = () => {
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"
+          backgroundImage: "url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80"></div>
+        {/* Lighter overlay for better visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brown-600/30 to-brown-800/40"></div>
       </div>
       <div className="container mx-auto px-4 md:px-6 z-10 text-center">
-        <div className="bg-black/30 backdrop-blur-sm p-6 rounded-lg inline-block max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-['Playfair_Display'] font-bold text-white mb-6 tracking-wide drop-shadow-lg">
+        <div className="bg-cream/90 p-8 rounded-lg inline-block max-w-3xl shadow-xl">
+          <h1 className="text-4xl md:text-6xl font-['Playfair_Display'] font-bold text-brown-800 mb-6 tracking-wide">
             Brewing Happiness<br />In Every Cup
           </h1>
-          <p className="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-md">
+          <p className="text-xl text-brown-700 mb-8 max-w-2xl mx-auto">
             Experience our artisanal coffee in a warm, inviting atmosphere that feels like home.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -35,7 +36,7 @@ const HeroSection = () => {
             </button>
             <button
               onClick={() => scrollToSection("franchise")}
-              className="px-8 py-3 border-2 border-white text-white rounded-full font-medium hover:bg-white hover:bg-opacity-20 transition-all transform hover:scale-105 shadow-lg"
+              className="px-8 py-3 border-2 border-brown-600 text-brown-600 rounded-full font-medium hover:bg-brown-600 hover:text-white transition-all transform hover:scale-105 shadow-lg"
             >
               Get a Franchise
             </button>
