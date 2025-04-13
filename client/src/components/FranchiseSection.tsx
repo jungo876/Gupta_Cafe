@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { apiRequest } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
+import { whatsappConfig } from "../config";
 
 const franchiseFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -32,16 +33,48 @@ const FranchiseSection = () => {
     },
   });
 
+  // WhatsApp helper function
+  const sendToWhatsApp = (data: FranchiseFormValues) => {
+    // Format the message
+    const message = `
+*New Franchise Request*
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Location: ${data.location}
+    `.trim();
+    
+    // Get the WhatsApp phone number from config
+    const phoneNumber = whatsappConfig.phoneNumber;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappURL, '_blank');
+  };
+
   const { mutate, isPending } = useMutation({
     mutationFn: async (data: FranchiseFormValues) => {
+      // First save to database
       await apiRequest("POST", "/api/franchise", data);
+      // Then send to WhatsApp
+      return data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast({
         title: "Franchise Request Submitted",
         description: "We'll get back to you soon with more information!",
         duration: 5000,
       });
+      
+      // Send to WhatsApp
+      sendToWhatsApp(data);
+      
+      // Reset form
       form.reset();
     },
     onError: (error) => {
@@ -111,15 +144,21 @@ const FranchiseSection = () => {
                 </li>
               ))}
             </ul>
-            <button className="inline-block px-8 py-3 bg-white text-orange-400 rounded-full font-medium hover:bg-opacity-90 transition-all transform hover:scale-105">
+            <button 
+              onClick={() => document.getElementById('franchise-form')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-block px-8 py-3 bg-white text-orange-400 rounded-full font-medium hover:bg-opacity-90 transition-all transform hover:scale-105"
+            >
               Apply Now
             </button>
           </div>
           <div className="md:w-1/2">
-            <div className="bg-white p-8 rounded-lg shadow-xl">
-              <h3 className="text-2xl font-['Playfair_Display'] font-bold mb-6 text-brown-600">
+            <div id="franchise-form" className="bg-white p-8 rounded-lg shadow-xl">
+              <h3 className="text-2xl font-['Playfair_Display'] font-bold mb-2 text-brown-600">
                 Request Franchise Information
               </h3>
+              <p className="text-brown-500 mb-4 text-sm">
+                Fill out the form below and we'll contact you promptly. Your franchise request will also be sent via WhatsApp for faster response.
+              </p>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   <FormField
