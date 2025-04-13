@@ -5,11 +5,30 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location, setLocation] = useLocation();
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Handle scroll events to change navbar style
+  // Handle scroll events to change navbar style and visibility
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      const currentScrollY = window.scrollY;
+      
+      // Determine if we should show or hide based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and not at the top
+        setIsVisible(false);
+        // Close mobile menu when hiding navbar
+        if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+      } else {
+        // Scrolling up or at the top
+        setIsVisible(true);
+      }
+      
+      // Update scroll position
+      setLastScrollY(currentScrollY);
+      
+      // Update background
+      if (currentScrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -20,7 +39,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [lastScrollY]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -40,8 +59,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 py-4 ${
+      className={`fixed w-full z-50 transition-all duration-300 py-4 transform ${
         isScrolled ? "bg-brown-500 bg-opacity-95 shadow-md" : ""
+      } ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
