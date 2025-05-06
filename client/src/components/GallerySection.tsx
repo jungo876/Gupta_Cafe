@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const GallerySection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -7,13 +7,13 @@ const GallerySection = () => {
   const galleryItems = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      image: "./src/photos/gc_award.jpg",
       title: "Best Café Award 2022",
       description: "Recognized for outstanding coffee quality and customer service."
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      image: "./src/photos/gc_banner.jpg",
       title: "Expansion Milestone",
       description: "Successfully opened our 25th franchise location nationwide."
     },
@@ -42,13 +42,21 @@ const GallerySection = () => {
       prevIndex === 0 ? galleryItems.length - 1 : prevIndex - 1
     );
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3500); // Change slide every 3 seconds
+  
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [activeIndex]);
+  
 
   return (
     <section id="gallery" className="py-16 bg-brown-50">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-center mb-12 text-brown-600">
+        {/* <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-center mb-12 text-brown-600">
           Our Achievements
-        </h2>
+        </h2> */}
 
         <div className="relative max-w-4xl mx-auto overflow-hidden rounded-lg shadow-xl">
           {/* Main gallery carousel */}

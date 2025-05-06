@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <a href="/" className="flex items-center">
             <span className="text-3xl font-['Pacifico'] text-white">
-              Brew<span className="text-orange-400">Haven</span>
+              Gupta<span className="text-orange-400">Cafe</span>
             </span>
           </a>
           {/* Admin link - subtle and small */}

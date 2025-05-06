@@ -118,16 +118,16 @@ const ContactSection = () => {
             <div>
               <h3 className="text-xl font-['Playfair_Display'] font-semibold mb-4 text-brown-600">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-brown-500 text-white rounded-full flex items-center justify-center hover:bg-orange-400 transition-colors">
+                <a href="#" className="w-10 h-10 bg-amber-400 hover:bg-orange-500 text-white rounded-full flex items-center justify-center  transition-colors">
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" className="w-10 h-10 bg-brown-500 text-white rounded-full flex items-center justify-center hover:bg-orange-400 transition-colors">
+                <a href="#" className="w-10 h-10 bg-amber-400 hover:bg-orange-500 text-white rounded-full flex items-center justify-center  transition-colors">
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="#" className="w-10 h-10 bg-brown-500 text-white rounded-full flex items-center justify-center hover:bg-orange-400 transition-colors">
+                <a href="#" className="w-10 h-10 bg-amber-400 hover:bg-orange-500 text-white rounded-full flex items-center justify-center  transition-colors">
                   <i className="fab fa-twitter"></i>
                 </a>
-                <a href="#" className="w-10 h-10 bg-brown-500 text-white rounded-full flex items-center justify-center hover:bg-orange-400 transition-colors">
+                <a href="#" className="w-10 h-10 bg-amber-400 hover:bg-orange-500 text-white rounded-full flex items-center justify-center  transition-colors">
                   <i className="fab fa-pinterest"></i>
                 </a>
               </div>
@@ -197,11 +197,12 @@ const ContactSection = () => {
                   />
                   <Button 
                     type="submit" 
-                    className="w-full py-6 bg-brown-500 text-white rounded hover:bg-brown-600 transition-all"
+                    className="w-full py-6 bg-amber-700 text-white rounded hover:bg-amber-800 transition-all"
                     disabled={isPending}
                   >
                     {isPending ? "Sending..." : "Send Message"}
                   </Button>
+
                 </form>
               </Form>
             </div>

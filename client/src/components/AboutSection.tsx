@@ -38,7 +38,7 @@ const AboutSection = () => {
           <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
             <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold mb-6 text-brown-600">Our Story</h2>
             <p className="text-brown-500 mb-6 leading-relaxed">
-              Founded in 2010, BrewHaven began as a small corner café with a big dream: to create a space where coffee wasn't just served—it was experienced. Our founders, Emma and James, traveled the world sourcing the finest beans and perfecting brewing techniques.
+              Founded in 2015, Gupta Cafe as a small corner café with a big dream: to create a space where coffee wasn't just served—it was experienced. Our founder Gupta Ji traveled the nation sourcing the finest beans and perfecting brewing techniques.
             </p>
             <p className="text-brown-500 mb-8 leading-relaxed">
               Today, we're proud to offer an authentic café experience that honors coffee traditions while embracing innovation. Every cup we serve is a testament to our journey and passion for creating moments of joy through exceptional coffee.
@@ -46,8 +46,8 @@ const AboutSection = () => {
             <div className="flex items-center">
               <div className="w-12 h-12 rounded-full bg-brown-300 mr-4"></div>
               <div>
-                <p className="font-medium text-brown-600">Emma & James</p>
-                <p className="text-sm text-brown-400">Founders</p>
+                <p className="font-medium text-brown-600">Gupta</p>
+                <p className="text-sm text-brown-400">Founder</p>
               </div>
             </div>
           </div>

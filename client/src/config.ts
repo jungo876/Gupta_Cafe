@@ -9,7 +9,7 @@
 export const whatsappConfig = {
   // Default phone number for WhatsApp (can be overridden by VITE_WHATSAPP_PHONE environment variable)
   // Format: country code + number, no spaces or special characters (e.g., 911234567890)
-  phoneNumber: import.meta.env.VITE_WHATSAPP_PHONE || "YOUR_PHONE_NUMBER_HERE",
+  phoneNumber: import.meta.env.VITE_WHATSAPP_PHONE || "918170947914",
 };
 
 // Other application settings can be added here in the future
