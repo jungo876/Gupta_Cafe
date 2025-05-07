@@ -3,23 +3,23 @@ import { useEffect, useRef } from "react";
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Sara Banerjee",
     rating: 5,
-    testimonial: "BrewHaven has become my second home. The coffee is consistently amazing, and the staff remembers my order. It's the perfect place to work or catch up with friends.",
+    testimonial: "GuptaCafe has become my second home. The coffee is consistently amazing, and the staff remembers my order. It's the perfect place to work or catch up with friends. Evenings here are magical – highly recommend!",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Adris Haldar",
     rating: 4.5,
-    testimonial: "As a coffee enthusiast, I've tried cafés all over the city, and BrewHaven stands out. Their attention to detail in every cup and the welcoming atmosphere keep me coming back.",
+    testimonial: "As a coffee enthusiast, I've tried cafés all over the city, and GuptaCafe stands out. Their attention to detail in every cup and the welcoming atmosphere keep me coming back.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
   },
   {
     id: 3,
-    name: "Emma Rodriguez",
+    name: "Prishati Patel",
     rating: 5,
-    testimonial: "I started as a customer and ended up becoming a franchise owner! The quality and consistency of BrewHaven inspired me to bring this experience to my own community.",
+    testimonial: "I started as a customer and ended up becoming a franchise owner! The quality and consistency of GuptaCafe inspired me to bring this experience to my own community.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
   },
 ];
@@ -77,7 +77,7 @@ const TestimonialsSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold mb-6 text-brown-600">What Our Customers Say</h2>
           <p className="text-brown-500 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our community has to say about their BrewHaven experience.
+            Don't just take our word for it. Here's what our community has to say about their GuptaCafe experience.
           </p>
         </div>
 

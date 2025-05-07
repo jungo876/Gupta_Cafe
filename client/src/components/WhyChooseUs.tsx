@@ -3,22 +3,23 @@ import { useEffect, useRef } from "react";
 const features = [
   {
     id: 1,
-    icon: "fa-coffee",
-    title: "Freshly Brewed",
-    description: "Every cup is prepared using freshly roasted beans, ground moments before brewing for optimal flavor.",
+    icon: "fa-mug-hot",
+    title: "Desi Flavors, Every Sip",
+    description: "Our chai is slow-brewed with traditional Indian spices and served in mitti ke kulhads for that earthy, nostalgic aroma.",
   },
   {
     id: 2,
-    icon: "fa-home",
-    title: "Cozy Ambience",
-    description: "Our spaces are designed to feel like a warm hug—comfortable seating, soft lighting, and a welcoming atmosphere.",
+    icon: "fa-chair",
+    title: "Desi Vibes & Comfort",
+    description: "Experience the warmth of a roadside chai tapri with cozy seating, ambient lights, and a soulful desi atmosphere.",
   },
   {
     id: 3,
     icon: "fa-leaf",
-    title: "Sourced Beans",
-    description: "We work directly with farmers who share our commitment to quality, sustainability, and ethical practices.",
+    title: "Locally Sourced Ingredients",
+    description: "We use fresh milk, whole spices, and premium tea leaves from Indian farms to deliver authentic desi taste in every cup.",
   },
+  
 ];
 
 const WhyChooseUs = () => {
@@ -58,7 +59,7 @@ const WhyChooseUs = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold mb-6">Why Choose Us</h2>
           <p className="max-w-2xl mx-auto opacity-90">
-            We're committed to creating more than just great coffee—we're creating experiences.
+            We're committed to creating more than just great Chai—we're creating experiences.
           </p>
         </div>
 

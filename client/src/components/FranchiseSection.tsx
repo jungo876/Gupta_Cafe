@@ -134,7 +134,7 @@ Location: ${data.location}
               Join Our Coffee Revolution
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              We're expanding! Be a part of our coffee revolution. Get your franchise today and bring the BrewHaven experience to your community.
+              We're expanding! Be a part of our coffee revolution. Get your franchise today and bring the GuptaCafe experience to your community.
             </p>
             <ul className="mb-10 space-y-3">
               {franchiseFeatures.map((feature, index) => (
@@ -168,7 +168,7 @@ Location: ${data.location}
                       <FormItem>
                         <FormLabel className="text-brown-500">Full Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your name" {...field} className="text-brown-600" />
+                          <Input placeholder="Your name" {...field} className="text-orange-900" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -181,7 +181,7 @@ Location: ${data.location}
                       <FormItem>
                         <FormLabel className="text-brown-500">Email Address</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your email" {...field} className="text-brown-600" />
+                          <Input placeholder="Your email" {...field} className="text-orange-900" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -194,7 +194,7 @@ Location: ${data.location}
                       <FormItem>
                         <FormLabel className="text-brown-500">Phone Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your phone" {...field} className="text-brown-600" />
+                          <Input placeholder="Your phone" {...field} className="text-orange-900" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -207,7 +207,7 @@ Location: ${data.location}
                       <FormItem>
                         <FormLabel className="text-brown-500">Preferred Location</FormLabel>
                         <FormControl>
-                          <Input placeholder="City, State" {...field} className="text-brown-600" />
+                          <Input placeholder="City, State" {...field} className="text-orange-900" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

@@ -74,7 +74,7 @@ const Navbar = () => {
           </a>
           {/* Admin link - subtle and small */}
           <Link href="/admin" className="ml-3 text-xs text-white/50 hover:text-orange-400 transition-colors">
-            Admin
+            
           </Link>
         </div>
 

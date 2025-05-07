@@ -7,27 +7,27 @@ const GallerySection = () => {
   const galleryItems = [
     {
       id: 1,
-      image: "./src/photos/gc_award.jpg",
-      title: "Best Café Award 2022",
+      image: "https://i.postimg.cc/3Nhm8xDW/Whats-App-Image-2025-04-30-at-21-28-14-04c0953d.jpg",
+      title: "",
       description: "Recognized for outstanding coffee quality and customer service."
     },
     {
       id: 2,
-      image: "./src/photos/gc_banner.jpg",
-      title: "Expansion Milestone",
-      description: "Successfully opened our 25th franchise location nationwide."
+      image: "https://i.postimg.cc/wTP1kk6g/gc-banner.jpg",
+      title: "",
+      description: ""
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-      title: "Community Leadership Award",
+      image: "https://images.unsplash.com/photo-1619581073186-5b4ae1b0caad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hhaXxlbnwwfHwwfHx8MA%3D%3D",
+      title: "",
       description: "Honored for our sustainable sourcing and community support initiatives."
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-      title: "Barista Championship",
-      description: "Our team won the National Barista Championship showcasing exceptional skills."
+      image: "https://images.unsplash.com/photo-1616109757495-706fcf65a25c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNoYWl8ZW58MHx8MHx8fDA%3D",
+      title: "",
+      description: "We proudly serve our customers with warmth and politeness."
     }
   ];
 
@@ -116,7 +116,7 @@ const GallerySection = () => {
 
         <div className="mt-12 text-center">
           <p className="text-brown-600 max-w-2xl mx-auto">
-            We're proud of our journey and the milestones we've achieved. Each award and recognition is a testament to our commitment to quality, community, and exceptional coffee experiences.
+            We're proud of our journey and the milestones we've achieved. Each award and recognition is a testament to our commitment to quality, community, and exceptional chai experiences.
           </p>
         </div>
       </div>

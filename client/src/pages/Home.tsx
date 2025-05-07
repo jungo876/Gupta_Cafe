@@ -10,7 +10,6 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import BlogPreviewSection from "@/components/BlogPreviewSection";
-import OffersSection from "@/components/OffersSection";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <CoffeeAnimation />
       <MenuSection />
       <WhyChooseUs />
-      <OffersSection />
       <GallerySection />
       <FranchiseSection />
       <TestimonialsSection />

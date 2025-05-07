@@ -13,11 +13,11 @@ const Footer = () => {
           <div className="mb-8 md:mb-0">
             <a href="#" className="flex items-center mb-4">
               <span className="text-3xl font-['Pacifico']">
-                Brew<span className="text-orange-400">Haven</span>
+                Gupta<span className="text-orange-400">Cafe</span>
               </span>
             </a>
             <p className="max-w-xs opacity-80">
-              Creating warm moments and unforgettable coffee experiences since 2010.
+              Creating warm moments and unforgettable coffee experiences since 2015.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div>
+            {/* <div>
               <h4 className="font-['Playfair_Display'] font-bold mb-4">Legal</h4>
               <ul className="space-y-2 opacity-80">
                 <li>
@@ -79,21 +79,19 @@ const Footer = () => {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div>
               <h4 className="font-['Playfair_Display'] font-bold mb-4">Hours</h4>
               <ul className="space-y-2 opacity-80">
-                <li>Mon-Fri: 7am - 8pm</li>
-                <li>Saturday: 8am - 9pm</li>
-                <li>Sunday: 8am - 7pm</li>
-              </ul>
+                <li>Monday-Sunday: 7am - 11pm</li>
+                              </ul>
             </div>
           </div>
-        </div>
+        </div> 
 
         <div className="pt-8 border-t border-brown-600 text-center opacity-70">
-          <p>&copy; {new Date().getFullYear()} BrewHaven Café. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Gupta Café. All rights reserved.</p>
         </div>
       </div>
     </footer>

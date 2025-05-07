@@ -16,7 +16,7 @@ document.head.appendChild(fontAwesome);
 
 // Add meta title
 const metaTitle = document.createElement("title");
-metaTitle.textContent = "Brew Haven - A Cozy Café Experience";
+metaTitle.textContent = "Gupta Cafe - A Cozy Café Experience";
 document.head.appendChild(metaTitle);
 
 createRoot(document.getElementById("root")!).render(<App />);
